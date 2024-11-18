@@ -9,6 +9,8 @@ public class Joueur
 
     public Joueur(string nom)
     {
+        if (string.IsNullOrEmpty(nom))
+            throw new ArgumentException("Le nom ne peut pas être vide.");
         this.nom = nom;
         this.score = 0;
         mots = new List<string>();
