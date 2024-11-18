@@ -1,5 +1,4 @@
 using System;
-
 public class De
 {
     private char[] faces;
@@ -7,6 +6,8 @@ public class De
 
     public De(char[] faces)
     {
+        if (faces.Length != 6)
+            throw new ArgumentException("Un dé doit avoir exactement 6 faces.");
         this.faces = faces;
         Lance(new Random());
     }
@@ -20,6 +21,7 @@ public class De
     {
         return $"Dé: {string.Join(", ", faces)}, Face visible: {visibleFace}";
     }
+
     public char VisibleFace
     {
         get { return visibleFace; }
