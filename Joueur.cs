@@ -5,7 +5,7 @@ public class Joueur
 {
     private string nom;
     private int score;
-    private List<string> mots;
+    private List<string> motstrouvé;
 
     public Joueur(string nom)
     {
@@ -13,25 +13,25 @@ public class Joueur
             throw new ArgumentException("Le nom ne peut pas être vide.");
         this.nom = nom;
         this.score = 0;
-        mots = new List<string>();
+        motstrouvé = new List<string>();
     }
 
     public bool Contain(string mot)
     {
-        return mots.Contains(mot);
+        return motstrouvé.Contains(mot);
     }
 
     public void Add_Mot(string mot)
     {
         if (!Contain(mot))
         {
-            mots.Add(mot);
+            motstrouvé.Add(mot);
         }
     }
 
     public override string ToString()
     {
-        return $"Joueur: {Nom}, Score: {Score}, Mots: {string.Join(", ", mots)}";
+        return $"Joueur: {Nom}, Score: {Score}, Mots: {string.Join(", ", motstrouvé)}";
     }
 
     public string Nom
