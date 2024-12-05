@@ -8,16 +8,39 @@ namespace boogle
 
     public class Dictionnaire
     {
+#region Instance        
         private List<string> words;
         private string langue;
+#endregion
 
+
+#region Attribut
+        public string Langue
+        {
+            get { return langue; }
+        }
+
+        public List<string> Words
+        {
+            get { return words; }
+        }
+
+
+#endregion
+
+
+#region Constructeur
         public Dictionnaire(string filePath, string langue)
         {
             words = File.ReadLines(filePath).Distinct().ToList();
+            this.langue=langue;
             
         }
+#endregion        
 
-        public override string ToString()
+
+#region Methode d'instance
+        public string toString()
         {
             var wordsByLength = words.GroupBy(w => w.Length).ToDictionary(g => g.Key, g => g.Count());
             var wordsByLetter = words.GroupBy(w => w[0]).ToDictionary(g => g.Key, g => g.Count());
@@ -39,17 +62,11 @@ namespace boogle
                 return RechDichoRecursif(sortedWords, mot, left, mid - 1);
             else
                 return RechDichoRecursif(sortedWords, mot, mid + 1, right);
-            return RechDichoRecursif(sortedWords, mot, 0, sortedWords.Length - 1);
+            // return RechDichoRecursif(sortedWords, mot, 0, sortedWords.Length - 1);
         }
 
-        public string Langue
-        {
-            get { return langue; }
-        }
+#endregion
 
-        public List<string> Words
-        {
-            get { return words; }
-        }
+        
     }
 }

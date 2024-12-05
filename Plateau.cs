@@ -3,20 +3,22 @@ namespace boogle
  
     public class Plateau
     {
-        #region instance
+#region instance
         private De[,] plateauDes;
-        #endregion
-        
-        #region propriétés
+#endregion
+
+
+#region propriétés
         private De[,] PlateauDes {get {return plateauDes;}  }
-        #endregion
-        
-        #region constructeur
+#endregion
+
+
+#region constructeur
         public Plateau(De[,]plateauDes)
         {
             this.plateauDes = plateauDes;
         }
-        #endregion
+
         
         public Plateau(int taille)
         {
@@ -26,10 +28,7 @@ namespace boogle
 
             Random random1 = new Random();
             Random random2 = new Random();
-            
-            
 
-            
             for (int i = 0; i < taille; i++)
             {
                 for (int j = 0; j < taille; j++)
@@ -41,13 +40,16 @@ namespace boogle
             }
         }
 
-        
+#endregion       
+
+
+#region Methode d'instance
 
 
         private List<De> GenererDes(int taille)  //Génère une liste contenant tous les dés, qui contiennent eux même un tableau de charactère correspondant aux faces
         {
             List<char> listeoccurences = new List<char>();
-            string cheminFichier = "C:\\Users\\hugo3\\OneDrive\\Documents\\GitHub\\Boogle\\Lettres.txt";
+            string cheminFichier = "C:\\Users\\hugo3\\OneDrive\\Documents\\GitHub\\Boogle\\Lettres.txt"; // a modifier sinon  cette fonction ne marche que sur le pc d'hugo
             string[] lignes = File.ReadAllLines(cheminFichier);
             foreach(string ligne in lignes)
             {
@@ -63,7 +65,6 @@ namespace boogle
                     listeoccurences.Add(lettre);
                 }
             }
-
             //Liste contenant toutes les lettres en fonction de leur occurence
             //tant qu'il y a assez de lettre dans la liste pour faire un dé
             //On créé un dé en remplissant ses faces (on fait une boucle imbriquée qui parcourt les dés puis leurs faces)
@@ -86,6 +87,11 @@ namespace boogle
             return listeDeDes;
         } 
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> c3a5b9e (création region pour toute les classes)
         public string toString()
         {
             string s = "";
@@ -108,6 +114,7 @@ namespace boogle
 
             return s; // Retourne la chaîne formée
         }
+#endregion
 
         public bool Test_Plateau(string mot)
         {   
