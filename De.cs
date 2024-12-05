@@ -5,8 +5,25 @@ namespace boogle
 
     public class De
     {
+#region Instance        
         private char[] faces;
         private char visibleFace;
+#endregion
+
+
+#region Attribut
+        public char VisibleFace
+        {
+            get { return visibleFace; }
+        }
+        public char[] Faces
+        {
+            get { return faces; }
+        }
+#endregion
+
+
+#region Constructeur
 
         public De(char[] faces)
         {
@@ -16,23 +33,23 @@ namespace boogle
             Lance(new Random());
         }
 
+
+#endregion
+
+
+#region Methode d'instance
         public void Lance(Random r)
         {
             visibleFace = faces[r.Next(6)];
         }
 
-        public override string ToString()
+        public string toString()
         {
             return $"Dé: {string.Join(", ", faces)}, Face visible: {visibleFace}";
         }
 
-        public char VisibleFace
-        {
-            get { return visibleFace; }
-        }
-        public char[] Faces
-        {
-            get { return faces; }
-        }
+#endregion
+
+
     }
 }

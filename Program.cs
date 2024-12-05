@@ -18,7 +18,7 @@ namespace boogle
 
                 // Affiche le plateau
                 Console.WriteLine("Voici le plateau généré :");
-                Console.WriteLine(plateau.ToString());
+                Console.WriteLine(plateau.toString());
             }
             catch (FileNotFoundException e)
             {
