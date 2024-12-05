@@ -1,51 +1,54 @@
 using System;
 using System.Collections.Generic;
+namespace boogle{
 
-public class Joueur
-{
-    private string nom;
-    private int score;
-    private List<string> motstrouvé;
 
-    public Joueur(string nom)
+    public class Joueur
     {
-        if (string.IsNullOrEmpty(nom))
-            throw new ArgumentException("Le nom ne peut pas être vide.");
-        this.nom = nom;
-        this.score = 0;
-        motstrouvé = new List<string>();
-    }
+        private string nom;
+        private int score;
+        private List<string> motstrouve;
 
-    public bool Contain(string mot)
-    {
-        return motstrouvé.Contains(mot);
-    }
-
-    public void Add_Mot(string mot)
-    {
-        if (!Contain(mot))
+        public Joueur(string nom)
         {
-            motstrouvé.Add(mot);
+            if (string.IsNullOrEmpty(nom))
+                throw new ArgumentException("Le nom ne peut pas être vide.");
+            this.nom = nom;
+            this.score = 0;
+            motstrouve = new List<string>();
         }
-    }
 
-    public override string ToString()
-    {
-        return $"Joueur: {Nom}, Score: {Score}, Mots: {string.Join(", ", motstrouvé)}";
-    }
+        public bool Contain(string mot)
+        {
+            return motstrouve.Contains(mot);
+        }
 
-    public string Nom
-    {
-        get { return nom; }
-    }
+        public void Add_Mot(string mot)
+        {
+            if (!Contain(mot))
+            {
+                motstrouve.Add(mot);
+            }
+        }
 
-    public int Score
-    {
-        get { return score; }
-    }
+        public override string ToString()
+        {
+            return $"Joueur: {Nom}, Score: {Score}, Mots: {string.Join(", ", motstrouve)}";
+        }
 
-    public List<string> Mots
-    {
-        get { return new List<string>(mots); }
+        public string Nom
+        {
+            get { return nom; }
+        }
+
+        public int Score
+        {
+            get { return score; }
+        }
+
+        public List<string> Mots
+        {
+            get { return new List<string>(motstrouve); }
+        }
     }
 }

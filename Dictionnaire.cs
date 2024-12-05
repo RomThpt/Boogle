@@ -2,51 +2,54 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-
-public class Dictionnaire
+namespace boogle
 {
-    private List<string> words;
-    private string langue;
 
-    public Dictionnaire(string filePath, string langue)
+
+    public class Dictionnaire
     {
-        words = File.ReadLines(filePath).Distinct().ToList();
-        words = words.OrderBy(w => w).ToArray()
-        this.langue = langue;
-    }
+        private List<string> words;
+        private string langue;
 
-    public override string ToString()
-    {
-        var wordsByLength = words.GroupBy(w => w.Length).ToDictionary(g => g.Key, g => g.Count());
-        var wordsByLetter = words.GroupBy(w => w[0]).ToDictionary(g => g.Key, g => g.Count());
+        public Dictionnaire(string filePath, string langue)
+        {
+            words = File.ReadLines(filePath).Distinct().ToList();
+            
+        }
 
-        return $"Langue: {Langue}, Mots par longueur: {string.Join(", ", wordsByLength.Select(kv => $"{kv.Key}: {kv.Value}"))}, Mots par lettre: {string.Join(", ", wordsByLetter.Select(kv => $"{kv.Key}: {kv.Value}"))}";
-    }
+        public override string ToString()
+        {
+            var wordsByLength = words.GroupBy(w => w.Length).ToDictionary(g => g.Key, g => g.Count());
+            var wordsByLetter = words.GroupBy(w => w[0]).ToDictionary(g => g.Key, g => g.Count());
 
-    public bool RechDichoRecursif(string[] sortedWords, string mot, int left, int right)
-    {
-        if (left > right)
-            return false;
+            return $"Langue: {Langue}, Mots par longueur: {string.Join(", ", wordsByLength.Select(kv => $"{kv.Key}: {kv.Value}"))}, Mots par lettre: {string.Join(", ", wordsByLetter.Select(kv => $"{kv.Key}: {kv.Value}"))}";
+        }
 
-        int mid = (left + right) / 2;
-        int comparison = string.Compare(mot, sortedWords[mid], StringComparison.OrdinalIgnoreCase);
+        public bool RechDichoRecursif(string[] sortedWords, string mot, int left, int right)
+        {
+            if (left > right)
+                return false;
 
-        if (comparison == 0)
-            return true;
-        else if (comparison < 0)
-            return RechDichoRecursif(sortedWords, mot, left, mid - 1);
-        else
-            return RechDichoRecursif(sortedWords, mot, mid + 1, right);
-        return RechDichoRecursif(sortedWords, mot, 0, sortedWords.Length - 1);
-    }
+            int mid = (left + right) / 2;
+            int comparison = string.Compare(mot, sortedWords[mid], StringComparison.OrdinalIgnoreCase);
 
-    public string Langue
-    {
-        get { return langue; }
-    }
+            if (comparison == 0)
+                return true;
+            else if (comparison < 0)
+                return RechDichoRecursif(sortedWords, mot, left, mid - 1);
+            else
+                return RechDichoRecursif(sortedWords, mot, mid + 1, right);
+            return RechDichoRecursif(sortedWords, mot, 0, sortedWords.Length - 1);
+        }
 
-    public List<string> Words
-    {
-        get { return words; }
+        public string Langue
+        {
+            get { return langue; }
+        }
+
+        public List<string> Words
+        {
+            get { return words; }
+        }
     }
 }
