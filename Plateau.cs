@@ -33,9 +33,10 @@ namespace boogle
             {
                 for (int j = 0; j < taille; j++)
                 {
-                    plateauDes[i,j]= desDisponibles[random1.Next(0,desDisponibles.Count)];
-                    
+                    int index = random1.Next(0,desDisponibles.Count);
+                    plateauDes[i,j]= desDisponibles[index];
                     plateauDes[i, j].Lance(random2); // Lancer le dé pour définir la face visible
+                    desDisponibles.RemoveAt(index);
                 }
             }
         }
