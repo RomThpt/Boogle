@@ -21,7 +21,7 @@ namespace boogle
 
         public void ConfigJeu ()
         {
-            
+            //iugugougiytf
         }
     }
 }
