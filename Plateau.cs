@@ -18,10 +18,10 @@ namespace boogle
         }
         #endregion
         
-        public Plateau(int taille, Dictionary <char,int> lettreFrequencies)
+        public Plateau(int taille)
         {
             
-            List<De> desDisponibles = GenererDes(taille, lettreFrequencies); //Création d'une liste de tous les dés du plateau
+            List<De> desDisponibles = GenererDes(taille); //Création d'une liste de tous les dés du plateau
             plateauDes = new De[taille, taille];  
 
             Random random1 = new Random();
@@ -44,7 +44,7 @@ namespace boogle
         
 
 
-        private List<De> GenererDes(int taille, Dictionary<char, int> lettreFrequencies)  //Génère une liste contenant tous les dés, qui contiennent eux même un tableau de charactère correspondant aux faces
+        private List<De> GenererDes(int taille)  //Génère une liste contenant tous les dés, qui contiennent eux même un tableau de charactère correspondant aux faces
         {
             List<char> listeoccurences = new List<char>();
             string cheminFichier = "C:\\Users\\hugo3\\OneDrive\\Documents\\GitHub\\Boogle\\Lettres.txt";
@@ -78,17 +78,12 @@ namespace boogle
                 {
                     int indice = random.Next(0,listeoccurences.Count);
                     FacesDes[j]=listeoccurences[indice];
-                    listeoccurences.RemoveAt(indice);
-                    
+                    listeoccurences.RemoveAt(indice);         
                 }
                 De Detemporaire  = new De(FacesDes);
                 listeDeDes.Add(Detemporaire);
-                
-                
             }
-            
-
-            return null;
+            return listeDeDes;
         } 
 
         public string ToString()

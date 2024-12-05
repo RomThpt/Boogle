@@ -30,5 +30,9 @@ namespace boogle
         {
             get { return visibleFace; }
         }
+        public char[] Faces
+        {
+            get { return faces; }
+        }
     }
 }
