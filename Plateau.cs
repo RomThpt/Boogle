@@ -86,7 +86,7 @@ namespace boogle
             return listeDeDes;
         } 
 
-        public string ToString()
+        public string toString()
         {
             string s = "";
             if (plateauDes != null && plateauDes.GetLength(0) > 0 && plateauDes.GetLength(1) > 0)
@@ -108,6 +108,68 @@ namespace boogle
 
             return s; // Retourne la chaîne formée
         }
+
+        public bool Test_Plateau(string mot)
+        {   
+            int taille = plateauDes.GetLength(0); // Taille du plateau (assume carré)
+            bool[,] visited = new bool[taille, taille]; // Marque les cases déjà utilisées
+
+            for (int i = 0; i < taille; i++)
+            {
+                for (int j = 0; j < taille; j++)
+                {
+                    // Si la première lettre du mot correspond, démarrer la recherche
+                    if (plateauDes[i, j].VisibleFace == mot[0] && 
+                        Backtrack(plateauDes, mot, 0, i, j, visited))
+                    {
+                        return true; // Le mot peut être formé
+                    }
+                }
+            }
+
+            return false; // Aucune correspondance trouvée
+        }
+
+        private bool Backtrack(De[,] plateauDes, string mot, int index, int x, int y, bool[,] visited)
+        {
+            // Cas de base : le mot est entièrement formé
+            if (index == mot.Length)
+            return true;
+
+            // Vérifications de validité
+            if (x < 0 || x >= plateauDes.GetLength(0) || y < 0 || y >= plateauDes.GetLength(1)) // Hors des limites
+                return false;
+
+            if (visited[x, y]) // Case déjà utilisée
+                return false;
+
+            if (plateauDes[x, y].VisibleFace != mot[index]) // Lettre incorrecte
+                return false;
+
+    // Marquer la case comme visitée
+            visited[x, y] = true;
+
+    // Déplacements possibles : haut, bas, gauche, droite, diagonales
+            int[] dx = { -1, -1, -1, 0, 0, 1, 1, 1 };
+            int[] dy = { -1, 0, 1, -1, 1, -1, 0, 1 };
+
+            for (int i = 0; i < 8; i++)
+            {
+                if (Backtrack(plateauDes, mot, index + 1, x + dx[i], y + dy[i], visited))
+                {
+                    return true; // Si un chemin fonctionne, retourner true
+                }
+            }
+
+    // Défaire le marquage (backtracking)
+            visited[x, y] = false;
+
+            return false; // Aucun chemin valide
+        }
+
+
+        
+
 
     }
 }
