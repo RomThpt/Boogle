@@ -88,11 +88,8 @@ namespace boogle
             return listeDeDes;
         } 
 
-<<<<<<< HEAD
-=======
 
 
->>>>>>> ec8f8145953c01c88db496b205f6c702fd958825
         public string toString()
         {
             string s = "";
