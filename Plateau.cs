@@ -88,11 +88,12 @@ namespace boogle
             return listeDeDes;
         } 
 
+
+
 <<<<<<< HEAD
-=======
-
-
 >>>>>>> c3a5b9e (création region pour toute les classes)
+=======
+>>>>>>> ef839e4 (Init Unit test setup)
         public string toString()
         {
             string s = "";
