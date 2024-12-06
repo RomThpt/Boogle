@@ -114,8 +114,10 @@ namespace boogle
         }
 #endregion
 
+        //RESTE A FAIRE : VERIFIER AUSSI QUE LE MOT EXISTE DANS FRTEXT 
         public bool Test_Plateau(string mot)
         {   
+            mot = mot.ToUpper();
             int taille = plateauDes.GetLength(0); // Taille du plateau (assume carré)
             bool[,] visited = new bool[taille, taille]; // Marque les cases déjà utilisées
 
