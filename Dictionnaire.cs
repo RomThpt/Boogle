@@ -83,42 +83,33 @@ namespace boogle
             if (string.IsNullOrEmpty(mot))
                 return 0;
 
-            // Charger les points des lettres depuis le fichier
-            string cheminFichier = GetFilePathForLangue(langue);
+            string cheminFichier = "C:\\Users\\hugo3\\Downloads\\Lettres.txt";
             string[] lignes = File.ReadAllLines(cheminFichier);
 
-            // Créer un dictionnaire des points par lettre
             Dictionary<char, int> pointsParLettre = new Dictionary<char, int>();
             foreach (string ligne in lignes)
             {
                 if (ligne.StartsWith("Lettre") || string.IsNullOrWhiteSpace(ligne))
-                    continue; // Ignore l'en-tête et les lignes vides
+                    continue;
 
                 string[] parts = ligne.Split(';');
                 if (parts.Length < 2 || string.IsNullOrEmpty(parts[0]))
-                {
-                    
                     continue;
-                }
 
                 char lettre = parts[0][0];
                 if (!char.IsLetter(lettre))
-                {
-                    
                     continue;
-                }
 
-                int points;
-                if (!int.TryParse(parts[1], out points))
-                {
-                    
+                if (!int.TryParse(parts[1], out int points))
                     continue;
-                }
 
                 pointsParLettre[lettre] = points;
-            }
 
-            // Calculer le score du mot
+
+            }
+            
+
+
             int score = 0;
             foreach (char lettre in mot.ToUpper())
             {
@@ -126,10 +117,16 @@ namespace boogle
                 {
                     score += points;
                 }
+                else
+                {
+                    Console.WriteLine($"Lettre non trouvée : {lettre}");
+                }
             }
 
+            
             return score;
         }
+
 
 
     } 
