@@ -10,42 +10,53 @@ namespace boogle
         private List<string> words;       // Liste des mots originaux
         private string[] sortedWords;     // Tableau trié pour la recherche dichotomique
         private string langue;
+#endregion
 
-        public string Langue => langue;
-        public List<string> Words => words;
 
-        public Dictionnaire(string langue)
+#region Attribut
+        public string Langue
         {
-            this.langue = langue;
-            string filePath = GetFilePathForLangue(langue);
-
-            if (!File.Exists(filePath))
-            {
-                throw new FileNotFoundException($"Le fichier dictionnaire pour la langue '{langue}' est introuvable.");
-            }
-
-            // Charger les mots en les séparant par des espaces
-            words = File.ReadAllText(filePath)                // Lire tout le contenu du fichier
-                        .Split(' ', StringSplitOptions.RemoveEmptyEntries) // Séparer par espaces
-                        .Select(w => w.Trim().ToLower())      // Nettoyer les espaces et convertir en minuscules
-                        .Distinct()                          // Supprimer les doublons
-                        .ToList();
-
-            // Trier les mots en fonction de leur version en minuscule
-            sortedWords = words.OrderBy(w => w).ToArray();
-
-        
-            
+            get { return langue; }
         }
 
-        // Recherche si un mot est contenu dans le dictionnaire
-        public bool ContientMot(string mot)
+        public List<string> Words
         {
-            if (string.IsNullOrEmpty(mot))
-                return false;
+            get { return words; }
+        }
 
-            // Recherche dichotomique dans le tableau trié
-            return RechDichoRecursif(sortedWords, mot.ToLower(), 0, sortedWords.Length - 1);
+
+#endregion
+
+
+#region Constructeur
+        public Dictionnaire(string filePath, string langue)
+        {
+            words = File.ReadLines(filePath).Distinct().ToList();
+            this.langue=langue;
+            
+        }
+#endregion        
+
+
+#region Methode d'instance
+        public string toString()
+        {
+            var wordsByLength = words.GroupBy(w => w.Length).ToDictionary(g => g.Key, g => g.Count());
+            var wordsByLetter = words.GroupBy(w => w[0]).ToDictionary(g => g.Key, g => g.Count());
+
+            return $"Langue: {Langue}, Mots par longueur: {string.Join(", ", wordsByLength.Select(kv => $"{kv.Key}: {kv.Value}"))}, Mots par lettre: {string.Join(", ", wordsByLetter.Select(kv => $"{kv.Key}: {kv.Value}"))}";
+        }
+
+        public string[] SortFileToArray(string filePath)
+        {
+        // Lire toutes les lignes du fichier
+        string[] lines = File.ReadAllLines(filePath);
+
+        // Trier les lignes
+        Array.Sort(lines, StringComparer.OrdinalIgnoreCase);
+
+        // Retourner le tableau trié
+        return lines;
         }
 
         // Recherche dichotomique récursive
