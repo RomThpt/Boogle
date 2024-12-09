@@ -172,7 +172,17 @@ namespace boogle
             chrono.Stop();
             Console.WriteLine($"Temps écoulé pour {joueur.Nom}.");
         }
+        foreach (var joueur in joueurs)
+        {
+            Console.WriteLine($"\nGénération du nuage de mots pour {joueur.Nom}...");
+            string filePath = $"{joueur.Nom}_WordCloud.png";
 
+            // Créer un dictionnaire mots -> scores pour le joueur
+            Dictionary<string, int> motsEtPoints = joueur.ObtenirMotsEtScores(dico);
+            WordCloud.GenerateWordCloud(motsEtPoints, filePath);
+
+            Console.WriteLine($"Nuage de mots généré pour {joueur.Nom} : {filePath}");
+        }
         Console.WriteLine("\n--- Fin de la partie ---");
         Console.WriteLine("Scores finaux :");
         foreach (var joueur in joueurs)
