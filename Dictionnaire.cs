@@ -62,7 +62,6 @@ namespace boogle
         return lines;
         }
 
-        // Recherche dichotomique récursive
         public bool RechDichoRecursif(string[] sortedWords, string mot, int left, int right)
         {
             if (left > right)
