@@ -50,6 +50,18 @@ namespace boogle
         {
             return $"Nom : {Nom}, Score : {Score}, Mots trouvés : {RécapitulatifMots()}";
         }
+
+        public Dictionary<string, int> ObtenirMotsEtScores(Dictionnaire dico)
+        {
+            Dictionary<string, int> motsEtPoints = new Dictionary<string, int>();
+            foreach (var mot in motsTrouves)
+            {
+                motsEtPoints[mot] = dico.Score(mot); // Calculer le score de chaque mot via le dictionnaire
+            }
+            return motsEtPoints;
+        }
         #endregion
+
+
     }
 }
