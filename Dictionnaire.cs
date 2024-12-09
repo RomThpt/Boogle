@@ -48,6 +48,18 @@ namespace boogle
             return $"Langue: {Langue}, Mots par longueur: {string.Join(", ", wordsByLength.Select(kv => $"{kv.Key}: {kv.Value}"))}, Mots par lettre: {string.Join(", ", wordsByLetter.Select(kv => $"{kv.Key}: {kv.Value}"))}";
         }
 
+        public string[] SortFileToArray(string filePath)
+        {
+        // Lire toutes les lignes du fichier
+        string[] lines = File.ReadAllLines(filePath);
+
+        // Trier les lignes
+        Array.Sort(lines, StringComparer.OrdinalIgnoreCase);
+
+        // Retourner le tableau trié
+        return lines;
+        }
+
         public bool RechDichoRecursif(string[] sortedWords, string mot, int left, int right)
         {
             if (left > right)
