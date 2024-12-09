@@ -1,70 +1,55 @@
-using System;
 using System.Collections.Generic;
-namespace boogle{
 
-
+namespace boogle
+{
     public class Joueur
     {
-#region Instance        
-        private string nom;
-        private int score;
-        private List<string> motstrouve;
-#endregion
-
-
-#region Attribut
-
-        public string Nom
-        {
-            get { return nom; }
-        }
-
-        public int Score
+        #region Attributs
+        public string Nom { get; private set; }          // Nom du joueur
+        private int score;                              // Champ privé pour le score
+        public int Score                                // Propriété pour accéder/modifier le score
         {
             get { return score; }
+            set { score = value; }
         }
+        private List<string> motsTrouves;
+        #endregion
 
-        public List<string> Mots
-        {
-            get { return new List<string>(motstrouve); }
-        }
+        #region Méthodes d'instance 
+        // Ajouter un mot trouvé par le joueur
 
-#endregion
-
-
-#region Constructeur
         public Joueur(string nom)
         {
-            if (string.IsNullOrEmpty(nom))
-                throw new ArgumentException("Le nom ne peut pas être vide.");
-            this.nom = nom;
-            this.score = 0;
-            motstrouve = new List<string>();
+            Nom = nom;
+            score = 0;
+            motsTrouves = new List<string>();
         }
-#endregion
-
-
-#region Methode d'instance
-        public bool Contain(string mot)
+        public void AjouterMot(string mot)
         {
-            return motstrouve.Contains(mot);
-        }
-
-        public void Add_Mot(string mot)
-        {
-            if (!Contain(mot))
+            if (!motsTrouves.Contains(mot)) // Évite les doublons
             {
-                motstrouve.Add(mot);
+                motsTrouves.Add(mot);
+                
             }
         }
 
-        public string toString()
+        // Vérifier si un mot a déjà été trouvé
+        public bool MotDejaTrouve(string mot)
         {
-            return $"Joueur: {Nom}, Score: {Score}, Mots: {string.Join(", ", motstrouve)}";
+            return motsTrouves.Contains(mot);
         }
 
-#endregion
+        // Récapitulatif des mots trouvés
+        public string RécapitulatifMots()
+        {
+            return string.Join(", ", motsTrouves);
+        }
 
-      
+        // Afficher les informations du joueur
+        public override string ToString()
+        {
+            return $"Nom : {Nom}, Score : {Score}, Mots trouvés : {RécapitulatifMots()}";
+        }
+        #endregion
     }
 }
