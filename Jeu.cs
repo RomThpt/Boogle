@@ -149,7 +149,8 @@ namespace boogle
                 {
                     if (!joueur.MotDejaTrouve(mot))
                     {
-                        int motScore = dico.Score(mot); // Calculer le score du mot
+                        int motScore = dico.Score(mot.ToLower());
+                         // Calculer le score du mot
                         joueur.AjouterMot(mot);
                         joueur.Score += motScore; // Ajouter le score au joueur
                         Console.WriteLine($"Mot accepté ! Score du mot : {motScore}, Score total : {joueur.Score}");
