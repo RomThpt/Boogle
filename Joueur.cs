@@ -16,41 +16,62 @@ namespace boogle
         #endregion
 
         #region Méthodes d'instance 
-        // Ajouter un mot trouvé par le joueur
-
+        /// <summary>
+        /// Constructeur de la classe Joueur.
+        /// </summary>
+        /// <param name="nom">Nom du joueur.</param>
         public Joueur(string nom)
         {
             Nom = nom;
             score = 0;
             motsTrouves = new List<string>();
         }
+
+        /// <summary>
+        /// Ajouter un mot trouvé par le joueur.
+        /// </summary>
+        /// <param name="mot">Mot trouvé.</param>
         public void AjouterMot(string mot)
         {
             if (!motsTrouves.Contains(mot)) // Évite les doublons
             {
                 motsTrouves.Add(mot);
-                
             }
         }
 
-        // Vérifier si un mot a déjà été trouvé
+        /// <summary>
+        /// Vérifier si un mot a déjà été trouvé.
+        /// </summary>
+        /// <param name="mot">Mot à vérifier.</param>
+        /// <returns>True si le mot a déjà été trouvé, sinon False.</returns>
         public bool MotDejaTrouve(string mot)
         {
             return motsTrouves.Contains(mot);
         }
 
-        // Récapitulatif des mots trouvés
+        /// <summary>
+        /// Récapitulatif des mots trouvés.
+        /// </summary>
+        /// <returns>Chaîne de caractères contenant les mots trouvés.</returns>
         public string RécapitulatifMots()
         {
             return string.Join(", ", motsTrouves);
         }
 
-        // Afficher les informations du joueur
+        /// <summary>
+        /// Afficher les informations du joueur.
+        /// </summary>
+        /// <returns>Chaîne de caractères contenant les informations du joueur.</returns>
         public override string ToString()
         {
             return $"Nom : {Nom}, Score : {Score}, Mots trouvés : {RécapitulatifMots()}";
         }
 
+        /// <summary>
+        /// Obtenir les mots trouvés et leurs scores.
+        /// </summary>
+        /// <param name="dico">Dictionnaire pour calculer les scores.</param>
+        /// <returns>Dictionnaire contenant les mots et leurs scores.</returns>
         public Dictionary<string, int> ObtenirMotsEtScores(Dictionnaire dico)
         {
             Dictionary<string, int> motsEtPoints = new Dictionary<string, int>();
@@ -61,7 +82,5 @@ namespace boogle
             return motsEtPoints;
         }
         #endregion
-
-
     }
 }

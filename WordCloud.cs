@@ -6,13 +6,17 @@ using System.Linq;
 
 public class WordCloud
 {
+    /// <summary>
+    /// Génère un nuage de mots à partir d'un dictionnaire de mots et de leurs scores.
+    /// </summary>
+    /// <param name="motsEtPoints">Dictionnaire contenant les mots et leurs scores.</param>
+    /// <param name="filePath">Chemin du fichier où l'image sera sauvegardée.</param>
     public static void GenerateWordCloud(Dictionary<string, int> motsEtPoints, string filePath)
     {
         int width = 800; // Largeur de l'image
         int height = 600; // Hauteur de l'image
         Bitmap bitmap = new Bitmap(width, height);
         Graphics graphics = Graphics.FromImage(bitmap);
-        
 
         // Fond blanc
         graphics.Clear(Color.White);

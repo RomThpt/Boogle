@@ -5,15 +5,29 @@ using System.Linq;
 
 namespace boogle
 {
+    /// <summary>
+    /// Représente un dictionnaire de mots.
+    /// </summary>
     public class Dictionnaire
     {
+        #region Instance
         private List<string> words;       // Liste des mots originaux
         private string[] sortedWords;     // Tableau trié pour la recherche dichotomique
         private string langue;
 
+        #endregion
+
+        #region Attribut
         public string Langue => langue;
         public List<string> Words => words;
+        #endregion
 
+        #region Constructeur
+        /// <summary>
+        /// Initialise une nouvelle instance de la classe <see cref="Dictionnaire"/> pour une langue donnée.
+        /// </summary>
+        /// <param name="langue"></param>
+        /// <exception cref="FileNotFoundException"></exception>
         public Dictionnaire(string langue)
         {
             this.langue = langue;
@@ -34,11 +48,10 @@ namespace boogle
             // Trier les mots en fonction de leur version en minuscule
             sortedWords = words.OrderBy(w => w).ToArray();
 
-        
-            
-        }
 
-        // Recherche si un mot est contenu dans le dictionnaire
+
+        }
+        #endregion
         public bool ContientMot(string mot)
         {
             if (string.IsNullOrEmpty(mot))
@@ -57,7 +70,7 @@ namespace boogle
             int mid = left + (right - left) / 2;
             int comparison = string.Compare(mot, sortedWords[mid], StringComparison.OrdinalIgnoreCase);
 
-           
+
 
             if (comparison == 0)
                 return true;
@@ -72,8 +85,8 @@ namespace boogle
         {
             return langue.ToLower() switch
             {
-                "français" => "MotsPossiblesFR.txt",
-                "anglais" => "MotsPossiblesEN.txt",
+                "français" => "./MotsPossiblesFR.txt",
+                "anglais" => "./MotsPossiblesEN.txt",
                 _ => throw new ArgumentException($"Langue '{langue}' non supportée.")
             };
         }
@@ -83,7 +96,7 @@ namespace boogle
             if (string.IsNullOrEmpty(mot))
                 return 0;
 
-            string cheminFichier = "Lettres.txt";
+            string cheminFichier = "./Lettres.txt";
             string[] lignes = File.ReadAllLines(cheminFichier);
 
             Dictionary<char, int> pointsParLettre = new Dictionary<char, int>();
@@ -107,7 +120,7 @@ namespace boogle
 
 
             }
-            
+
 
 
             int score = 0;
@@ -123,12 +136,8 @@ namespace boogle
                 }
             }
 
-            
+
             return score;
         }
-        //
-
-
-
-    } 
+    }
 }
