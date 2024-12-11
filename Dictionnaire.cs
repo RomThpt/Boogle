@@ -72,8 +72,8 @@ namespace boogle
         {
             return langue.ToLower() switch
             {
-                "français" => "C:\\Users\\hugo3\\OneDrive\\Documents\\GitHub\\Boogle\\MotsPossiblesFR.txt",
-                "anglais" => "C:\\Users\\hugo3\\OneDrive\\Documents\\GitHub\\Boogle\\MotsPossiblesEN.txt",
+                "français" => "MotsPossiblesFR.txt",
+                "anglais" => "MotsPossiblesEN.txt",
                 _ => throw new ArgumentException($"Langue '{langue}' non supportée.")
             };
         }
@@ -83,7 +83,7 @@ namespace boogle
             if (string.IsNullOrEmpty(mot))
                 return 0;
 
-            string cheminFichier = "C:\\Users\\hugo3\\Downloads\\Lettres.txt";
+            string cheminFichier = "Lettres.txt";
             string[] lignes = File.ReadAllLines(cheminFichier);
 
             Dictionary<char, int> pointsParLettre = new Dictionary<char, int>();

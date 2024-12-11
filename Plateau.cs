@@ -50,7 +50,7 @@ namespace boogle
         private List<De> GenererDes(int taille)  //Génère une liste contenant tous les dés, qui contiennent eux même un tableau de charactère correspondant aux faces
         {
             List<char> listeoccurences = new List<char>();
-            string cheminFichier = "C:\\Users\\hugo3\\OneDrive\\Documents\\GitHub\\Boogle\\Lettres.txt"; // a modifier sinon  cette fonction ne marche que sur le pc d'hugo
+            string cheminFichier = "Lettres.txt"; // a modifier sinon  cette fonction ne marche que sur le pc d'hugo
             string[] lignes = File.ReadAllLines(cheminFichier);
             foreach(string ligne in lignes)
             {
