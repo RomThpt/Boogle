@@ -12,6 +12,7 @@ public class WordCloud
         int height = 600; // Hauteur de l'image
         Bitmap bitmap = new Bitmap(width, height);
         Graphics graphics = Graphics.FromImage(bitmap);
+        
 
         // Fond blanc
         graphics.Clear(Color.White);
