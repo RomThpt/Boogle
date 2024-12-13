@@ -72,8 +72,8 @@ namespace boogle
         {
             return langue.ToLower() switch
             {
-                "français" => "MotsPossiblesFR.txt",
-                "anglais" => "MotsPossiblesEN.txt",
+                "français" => "C:\\Users\\hugo3\\OneDrive\\Documents\\GitHub\\Boogle\\MotsPossiblesFR.txt",
+                "anglais" => "C:\\Users\\hugo3\\OneDrive\\Documents\\GitHub\\Boogle\\MotsPossiblesEN.txt",
                 _ => throw new ArgumentException($"Langue '{langue}' non supportée.")
             };
         }
@@ -83,7 +83,7 @@ namespace boogle
             if (string.IsNullOrEmpty(mot))
                 return 0;
 
-            string cheminFichier = "Lettres.txt";
+            string cheminFichier = "C:\\Users\\hugo3\\Downloads\\Lettres.txt";
             string[] lignes = File.ReadAllLines(cheminFichier);
 
             Dictionary<char, int> pointsParLettre = new Dictionary<char, int>();
@@ -126,6 +126,23 @@ namespace boogle
             
             return score;
         }
+        public bool EstPrefixeValide(string prefixe)
+        {
+            // Cherche le préfixe dans les mots triés (sortedWords)
+            int index = Array.BinarySearch(sortedWords, prefixe, StringComparer.OrdinalIgnoreCase);
+
+            if (index >= 0)
+                return true; // Le préfixe correspond exactement à un mot
+            else
+            {
+                index = ~index; // Récupère l'indice du premier mot plus grand que le préfixe
+                if (index < sortedWords.Length && sortedWords[index].StartsWith(prefixe, StringComparison.OrdinalIgnoreCase))
+                    return true; // Le préfixe est valide pour au moins un mot
+            }
+
+            return false; // Aucun mot ne commence par ce préfixe
+        }
+
         //
 
 

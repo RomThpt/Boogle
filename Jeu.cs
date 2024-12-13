@@ -150,7 +150,6 @@ namespace boogle
                     if (!joueur.MotDejaTrouve(mot))
                     {
                         int motScore = dico.Score(mot.ToLower());
-                         // Calculer le score du mot
                         joueur.AjouterMot(mot);
                         joueur.Score += motScore; // Ajouter le score au joueur
                         Console.WriteLine($"Mot accepté ! Score du mot : {motScore}, Score total : {joueur.Score}");
@@ -172,6 +171,8 @@ namespace boogle
             chrono.Stop();
             Console.WriteLine($"Temps écoulé pour {joueur.Nom}.");
         }
+
+        // Générer le WordCloud pour chaque joueur
         foreach (var joueur in joueurs)
         {
             Console.WriteLine($"\nGénération du nuage de mots pour {joueur.Nom}...");
@@ -183,13 +184,44 @@ namespace boogle
 
             Console.WriteLine($"Nuage de mots généré pour {joueur.Nom} : {filePath}");
         }
+
+        // Recherche des mots valides sur le plateau (IA)
+        Console.WriteLine("\nRecherche IA : Tous les mots valides sur le plateau...");
+        List<string> motsTrouvesParIA = plateauactuel.RechercheIA(dico);
+
+        Console.WriteLine($"Mots trouvés par l'IA ({motsTrouvesParIA.Count}) :");
+        foreach (var mot in motsTrouvesParIA)
+        {
+            Console.WriteLine(mot);
+        }
+
+        // Génération du nuage de mots global pour l'IA
+        Console.WriteLine("\nGénération du nuage de mots global pour l'IA...");
+        string iaFilePath = "IA_WordCloud.png";
+
+        // Créer un dictionnaire mots -> scores pour tous les mots trouvés par l'IA
+        Dictionary<string, int> motsEtScoresIA = motsTrouvesParIA.ToDictionary(
+            mot => mot,
+            mot => dico.Score(mot)
+        );
+
+        WordCloud.GenerateWordCloud(motsEtScoresIA, iaFilePath);
+
+        Console.WriteLine($"Nuage de mots global généré pour l'IA : {iaFilePath}");
+
+        // Fin de la partie
         Console.WriteLine("\n--- Fin de la partie ---");
         Console.WriteLine("Scores finaux :");
         foreach (var joueur in joueurs)
         {
             Console.WriteLine($"{joueur.Nom} : {joueur.Score} points");
         }
+
+        Console.ReadKey();
     }
+
+
+
 
 
 

@@ -50,7 +50,7 @@ namespace boogle
         private List<De> GenererDes(int taille)  //Génère une liste contenant tous les dés, qui contiennent eux même un tableau de charactère correspondant aux faces
         {
             List<char> listeoccurences = new List<char>();
-            string cheminFichier = "Lettres.txt"; // a modifier sinon  cette fonction ne marche que sur le pc d'hugo
+            string cheminFichier = "C:\\Users\\hugo3\\OneDrive\\Documents\\GitHub\\Boogle\\Lettres.txt"; // a modifier sinon  cette fonction ne marche que sur le pc d'hugo
             string[] lignes = File.ReadAllLines(cheminFichier);
             foreach(string ligne in lignes)
             {
@@ -172,10 +172,58 @@ namespace boogle
             visited[x, y] = false;
 
             return false; // Aucun chemin valide
+        }       
+        public List<string> RechercheIA(Dictionnaire dico)
+        {
+            HashSet<string> motsTrouves = new HashSet<string>(); // Évite les doublons
+            int taille = plateauDes.GetLength(0);
+
+            for (int i = 0; i < taille; i++)
+            {
+                for (int j = 0; j < taille; j++)
+                {
+                    bool[,] visited = new bool[taille, taille]; // Garde trace des dés déjà visités
+                    RechercheRecursive(i, j, "", visited, motsTrouves, dico);
+                }
+            }
+
+            return motsTrouves.ToList();
         }
 
+        private void RechercheRecursive(int x, int y, string motActuel, bool[,] visited, HashSet<string> motsTrouves, Dictionnaire dico)
+        {
+            // Vérifie les limites du plateau et si la position a déjà été visitée
+            if (x < 0 || y < 0 || x >= plateauDes.GetLength(0) || y >= plateauDes.GetLength(1) || visited[x, y])
+                return;
 
-        
+            // Construit le mot en cours
+            motActuel += plateauDes[x, y].VisibleFace;
+
+            // Vérifie si le préfixe est valide
+            if (!dico.EstPrefixeValide(motActuel))
+                return; // Si ce préfixe ne mène à aucun mot, abandonne cette voie
+
+            // Si le mot est valide, l'ajoute à la liste des mots trouvés
+            if (dico.ContientMot(motActuel))
+                motsTrouves.Add(motActuel);
+
+            // Marque cette position comme visitée
+            visited[x, y] = true;
+
+            // Explore les voisins (8 directions)
+            for (int dx = -1; dx <= 1; dx++)
+            {
+                for (int dy = -1; dy <= 1; dy++)
+                {
+                    if (dx != 0 || dy != 0) // Évite de revenir sur le même dé
+                        RechercheRecursive(x + dx, y + dy, motActuel, visited, motsTrouves, dico);
+                }
+            }
+
+            // Marque cette position comme non visitée (backtracking)
+            visited[x, y] = false;
+        }
+
 
 
     }
