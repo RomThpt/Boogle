@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "/Users/reeflk/Library/CloudStorage/OneDrive-DeVinci/Algo/A2/boogle/boogle.csproj": {}
+    "C:\\Users\\hugo3\\OneDrive\\Documents\\GitHub\\Boogle\\boogle.csproj": {}
   },
   "projects": {
-    "/Users/reeflk/Library/CloudStorage/OneDrive-DeVinci/Algo/A2/boogle/boogle.csproj": {
+    "C:\\Users\\hugo3\\OneDrive\\Documents\\GitHub\\Boogle\\boogle.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/reeflk/Library/CloudStorage/OneDrive-DeVinci/Algo/A2/boogle/boogle.csproj",
+        "projectUniqueName": "C:\\Users\\hugo3\\OneDrive\\Documents\\GitHub\\Boogle\\boogle.csproj",
         "projectName": "boogle",
-        "projectPath": "/Users/reeflk/Library/CloudStorage/OneDrive-DeVinci/Algo/A2/boogle/boogle.csproj",
-        "packagesPath": "/Users/reeflk/.nuget/packages/",
-        "outputPath": "/Users/reeflk/Library/CloudStorage/OneDrive-DeVinci/Algo/A2/boogle/obj/",
+        "projectPath": "C:\\Users\\hugo3\\OneDrive\\Documents\\GitHub\\Boogle\\boogle.csproj",
+        "packagesPath": "C:\\Users\\hugo3\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\hugo3\\OneDrive\\Documents\\GitHub\\Boogle\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/reeflk/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\hugo3\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -32,11 +34,38 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[16.0.0-preview-20181205-02, )"
+            },
+            "SkiaSharp": {
+              "target": "Package",
+              "version": "[2.88.0, )"
+            },
+            "System.Drawing.Common": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.9.2, )"
+            },
+            "xunit.runner.visualstudio": {
+              "target": "Package",
+              "version": "[2.4.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -53,7 +82,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/opt/homebrew/Cellar/dotnet/8.0.8/libexec/sdk/8.0.108/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
