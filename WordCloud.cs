@@ -4,9 +4,16 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
 
-//Code généré par IA
+/// <summary>
+/// Classe responsable de la génération d'un nuage de mots.
+/// </summary>
 public class WordCloud
 {
+    /// <summary>
+    /// Génère un nuage de mots à partir d'un dictionnaire de mots et de leurs scores.
+    /// </summary>
+    /// <param name="motsEtPoints">Dictionnaire contenant les mots et leurs scores.</param>
+    /// <param name="filePath">Chemin du fichier pour sauvegarder l'image générée.</param>
     public static void GenerateWordCloud(Dictionary<string, int> motsEtPoints, string filePath)
     {
         int width = 800; // Largeur de l'image
@@ -37,6 +44,7 @@ public class WordCloud
         // Centre de l'image
         PointF center = new PointF(width / 2, height / 2);
 
+        // Placement des mots
         foreach (var kvp in motsEtPoints.OrderByDescending(kv => kv.Value)) // Commence par les mots les plus grands
         {
             string mot = kvp.Key;
@@ -101,7 +109,7 @@ public class WordCloud
 
             if (attempts >= 2000)
             {
-                Console.WriteLine($"");
+                Console.WriteLine($"Impossible de placer le mot : {mot}");
             }
         }
 

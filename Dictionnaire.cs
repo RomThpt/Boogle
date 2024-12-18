@@ -5,15 +5,40 @@ using System.Linq;
 
 namespace boogle
 {
+    /// <summary>
+    /// Représente un dictionnaire utilisé pour valider les mots dans le jeu.
+    /// </summary>
     public class Dictionnaire
     {
-        private List<string> words;       // Liste des mots originaux
-        private string[] sortedWords;     // Tableau trié pour la recherche dichotomique
+        /// <summary>
+        /// Liste des mots originaux dans le dictionnaire.
+        /// </summary>
+        private List<string> words;
+
+        /// <summary>
+        /// Tableau trié pour effectuer des recherches dichotomiques.
+        /// </summary>
+        private string[] sortedWords;
+
+        /// <summary>
+        /// Langue associée au dictionnaire.
+        /// </summary>
         private string langue;
 
+        /// <summary>
+        /// Propriété permettant d'accéder à la langue du dictionnaire.
+        /// </summary>
         public string Langue => langue;
+
+        /// <summary>
+        /// Propriété permettant d'accéder à la liste des mots dans le dictionnaire.
+        /// </summary>
         public List<string> Words => words;
 
+        /// <summary>
+        /// Initialise un dictionnaire à partir d'une langue donnée.
+        /// </summary>
+        /// <param name="langue">Langue du dictionnaire (par exemple : "français" ou "anglais").</param>
         public Dictionnaire(string langue)
         {
             this.langue = langue;
@@ -24,31 +49,36 @@ namespace boogle
                 throw new FileNotFoundException($"Le fichier dictionnaire pour la langue '{langue}' est introuvable.");
             }
 
-            // Charger les mots en les séparant par des espaces
-            words = File.ReadAllText(filePath)                // Lire tout le contenu du fichier
-                        .Split(' ', StringSplitOptions.RemoveEmptyEntries) // Séparer par espaces
-                        .Select(w => w.Trim().ToLower())      // Nettoyer les espaces et convertir en minuscules
-                        .Distinct()                          // Supprimer les doublons
+            // Charger les mots et les trier
+            words = File.ReadAllText(filePath)
+                        .Split(' ', StringSplitOptions.RemoveEmptyEntries)
+                        .Select(w => w.Trim().ToLower())
+                        .Distinct()
                         .ToList();
-
-            // Trier les mots en fonction de leur version en minuscule
             sortedWords = words.OrderBy(w => w).ToArray();
-
-        
-            
         }
 
-        // Recherche si un mot est contenu dans le dictionnaire
+        /// <summary>
+        /// Vérifie si un mot est contenu dans le dictionnaire.
+        /// </summary>
+        /// <param name="mot">Mot à vérifier.</param>
+        /// <returns>True si le mot est présent dans le dictionnaire, sinon False.</returns>
         public bool ContientMot(string mot)
         {
             if (string.IsNullOrEmpty(mot))
                 return false;
 
-            // Recherche dichotomique dans le tableau trié
             return RechDichoRecursif(sortedWords, mot.ToLower(), 0, sortedWords.Length - 1);
         }
 
-        // Recherche dichotomique récursive
+        /// <summary>
+        /// Effectue une recherche dichotomique récursive dans le dictionnaire.
+        /// </summary>
+        /// <param name="sortedWords">Tableau trié de mots.</param>
+        /// <param name="mot">Mot à rechercher.</param>
+        /// <param name="left">Indice gauche de la recherche.</param>
+        /// <param name="right">Indice droit de la recherche.</param>
+        /// <returns>True si le mot est trouvé, sinon False.</returns>
         public bool RechDichoRecursif(string[] sortedWords, string mot, int left, int right)
         {
             if (left > right)
@@ -56,8 +86,6 @@ namespace boogle
 
             int mid = left + (right - left) / 2;
             int comparison = string.Compare(mot, sortedWords[mid], StringComparison.OrdinalIgnoreCase);
-
-           
 
             if (comparison == 0)
                 return true;
@@ -67,7 +95,11 @@ namespace boogle
                 return RechDichoRecursif(sortedWords, mot, mid + 1, right);
         }
 
-        // Obtient le chemin du fichier dictionnaire pour une langue donnée
+        /// <summary>
+        /// Retourne le chemin du fichier dictionnaire correspondant à une langue donnée.
+        /// </summary>
+        /// <param name="langue">Langue demandée.</param>
+        /// <returns>Chemin du fichier dictionnaire.</returns>
         private string GetFilePathForLangue(string langue)
         {
             return langue.ToLower() switch
@@ -78,6 +110,11 @@ namespace boogle
             };
         }
 
+        /// <summary>
+        /// Calcule le score d'un mot en fonction de ses lettres.
+        /// </summary>
+        /// <param name="mot">Mot dont le score doit être calculé.</param>
+        /// <returns>Score du mot.</returns>
         public int Score(string mot)
         {
             if (string.IsNullOrEmpty(mot))
@@ -104,11 +141,7 @@ namespace boogle
                     continue;
 
                 pointsParLettre[lettre] = points;
-
-
             }
-            
-
 
             int score = 0;
             foreach (char lettre in mot.ToUpper())
@@ -123,29 +156,26 @@ namespace boogle
                 }
             }
 
-            
             return score;
         }
+
+        /// <summary>
+        /// Vérifie si un préfixe est valide (peut correspondre à un ou plusieurs mots dans le dictionnaire).
+        /// </summary>
+        /// <param name="prefixe">Préfixe à vérifier.</param>
+        /// <returns>True si le préfixe est valide, sinon False.</returns>
         public bool EstPrefixeValide(string prefixe)
         {
-            // Cherche le préfixe dans les mots triés (sortedWords)
             int index = Array.BinarySearch(sortedWords, prefixe, StringComparer.OrdinalIgnoreCase);
 
             if (index >= 0)
-                return true; // Le préfixe correspond exactement à un mot
-            else
-            {
-                index = ~index; // Récupère l'indice du premier mot plus grand que le préfixe
-                if (index < sortedWords.Length && sortedWords[index].StartsWith(prefixe, StringComparison.OrdinalIgnoreCase))
-                    return true; // Le préfixe est valide pour au moins un mot
-            }
+                return true;
 
-            return false; // Aucun mot ne commence par ce préfixe
+            index = ~index;
+            if (index < sortedWords.Length && sortedWords[index].StartsWith(prefixe, StringComparison.OrdinalIgnoreCase))
+                return true;
+
+            return false;
         }
-
-        //
-
-
-
-    } 
+    }
 }
