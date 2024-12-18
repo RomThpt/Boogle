@@ -47,6 +47,8 @@ namespace boogle
                 {
                     int index = random1.Next(0, desDisponibles.Count);
                     plateauDes[i, j] = desDisponibles[index];
+                    int index = random1.Next(0, desDisponibles.Count);
+                    plateauDes[i, j] = desDisponibles[index];
                     plateauDes[i, j].Lance(random2); // Lancer le dé pour définir la face visible
                     desDisponibles.RemoveAt(index);
                 }
@@ -69,6 +71,7 @@ namespace boogle
             foreach (string ligne in lignes)
             {
                 if (ligne.StartsWith("Lettre"))
+                if (ligne.StartsWith("Lettre"))
                 {
                     continue;
                 }
@@ -88,11 +91,14 @@ namespace boogle
             {
                 char[] FacesDes = new char[6];
                 for (int j = 0; j < 6; j++)
+                char[] FacesDes = new char[6];
+                for (int j = 0; j < 6; j++)
                 {
                     int indice = random.Next(0, listeoccurences.Count);
                     FacesDes[j] = listeoccurences[indice];
                     listeoccurences.RemoveAt(indice);         
                 }
+                De Detemporaire = new De(FacesDes);
                 De Detemporaire = new De(FacesDes);
                 listeDeDes.Add(Detemporaire);
             }
@@ -131,6 +137,7 @@ namespace boogle
         /// <param name="mot">Mot à vérifier.</param>
         /// <returns>True si le mot peut être formé, sinon False.</returns>
         public bool Test_Plateau(string mot)
+        {
         {
             mot = mot.ToUpper();
             int taille = plateauDes.GetLength(0);
