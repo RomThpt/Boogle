@@ -207,7 +207,7 @@ namespace boogle
 
         WordCloud.GenerateWordCloud(motsEtScoresIA, iaFilePath);
 
-        Console.WriteLine($"Nuage de mots global généré pour l'IA : {iaFilePath}");
+        
 
         // Fin de la partie
         Console.WriteLine("\n--- Fin de la partie ---");
