@@ -9,7 +9,7 @@
       "boogle/1.0.0": {
         "dependencies": {
           "Microsoft.NET.Test.Sdk": "16.0.0-preview-20181205-02",
-          "SkiaSharp": "2.88.0",
+          "SkiaSharp": "2.88.3",
           "System.Drawing.Common": "9.0.0",
           "xunit": "2.9.2",
           "xunit.runner.visualstudio": "2.4.1"
@@ -482,20 +482,19 @@
           "Microsoft.NETCore.Targets": "1.0.1"
         }
       },
-      "SkiaSharp/2.88.0": {
+      "SkiaSharp/2.88.3": {
         "dependencies": {
-          "SkiaSharp.NativeAssets.Win32": "2.88.0",
-          "SkiaSharp.NativeAssets.macOS": "2.88.0",
-          "System.Memory": "4.5.3"
+          "SkiaSharp.NativeAssets.Win32": "2.88.3",
+          "SkiaSharp.NativeAssets.macOS": "2.88.3"
         },
         "runtime": {
-          "lib/netstandard2.0/SkiaSharp.dll": {
+          "lib/net6.0/SkiaSharp.dll": {
             "assemblyVersion": "2.88.0.0",
-            "fileVersion": "2.88.0.0"
+            "fileVersion": "2.88.3.0"
           }
         }
       },
-      "SkiaSharp.NativeAssets.macOS/2.88.0": {
+      "SkiaSharp.NativeAssets.macOS/2.88.3": {
         "runtimeTargets": {
           "runtimes/osx/native/libSkiaSharp.dylib": {
             "rid": "osx",
@@ -504,7 +503,7 @@
           }
         }
       },
-      "SkiaSharp.NativeAssets.Win32/2.88.0": {
+      "SkiaSharp.NativeAssets.Win32/2.88.3": {
         "runtimeTargets": {
           "runtimes/win-arm64/native/libSkiaSharp.dll": {
             "rid": "win-arm64",
@@ -863,7 +862,6 @@
           "System.Threading": "4.0.11"
         }
       },
-      "System.Memory/4.5.3": {},
       "System.Net.Http/4.1.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.0.1",
@@ -1579,26 +1577,26 @@
       "path": "runtime.native.system.security.cryptography/4.0.0",
       "hashPath": "runtime.native.system.security.cryptography.4.0.0.nupkg.sha512"
     },
-    "SkiaSharp/2.88.0": {
+    "SkiaSharp/2.88.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-OKBrwZ4TdRjPjl2tVFbcakyNZBI9zBGFzZKr6DbhgybVpjiBMvIQbbbN4Wfl0lts0TJ5AwHDr6EO7zusJJOamQ==",
-      "path": "skiasharp/2.88.0",
-      "hashPath": "skiasharp.2.88.0.nupkg.sha512"
+      "sha512": "sha512-GG8X3EdfwyBfwjl639UIiOVOKEdeoqDgYrz0P1MUCnefXt9cofN+AK8YB/v1+5cLMr03ieWCQdDmPqnFIzSxZw==",
+      "path": "skiasharp/2.88.3",
+      "hashPath": "skiasharp.2.88.3.nupkg.sha512"
     },
-    "SkiaSharp.NativeAssets.macOS/2.88.0": {
+    "SkiaSharp.NativeAssets.macOS/2.88.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-tfcr1Bnye1lsBbsskqtlkZrFDBZfIEfJoGzJ6nnJF1sSDs8zzdiuL7PjEUDEh5iHb6Wbc0la9f/OIPnUcW7KFg==",
-      "path": "skiasharp.nativeassets.macos/2.88.0",
-      "hashPath": "skiasharp.nativeassets.macos.2.88.0.nupkg.sha512"
+      "sha512": "sha512-CEbWAXMGFkPV3S1snBKK7jEG3+xud/9kmSAhu0BEUKKtlMdxx+Qal0U9bntQREM9QpqP5xLWZooodi8IlV8MEg==",
+      "path": "skiasharp.nativeassets.macos/2.88.3",
+      "hashPath": "skiasharp.nativeassets.macos.2.88.3.nupkg.sha512"
     },
-    "SkiaSharp.NativeAssets.Win32/2.88.0": {
+    "SkiaSharp.NativeAssets.Win32/2.88.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-R//VHCO/FTBtDMyYTzazuqLU8QOczapgf9FIC6Hw2SodP79CYu27+fdGS0fL9bt1qKCCitlI22QWSniPLG8YJg==",
-      "path": "skiasharp.nativeassets.win32/2.88.0",
-      "hashPath": "skiasharp.nativeassets.win32.2.88.0.nupkg.sha512"
+      "sha512": "sha512-MU4ASL8VAbTv5vSw1PoiWjjjpjtGhWtFYuJnrN4sNHFCePb2ohQij9JhSdqLLxk7RpRtWPdV93fbA53Pt+J0yw==",
+      "path": "skiasharp.nativeassets.win32/2.88.3",
+      "hashPath": "skiasharp.nativeassets.win32.2.88.3.nupkg.sha512"
     },
     "System.AppContext/4.1.0": {
       "type": "package",
@@ -1816,13 +1814,6 @@
       "sha512": "sha512-I+y02iqkgmCAyfbqOmSDOgqdZQ5tTj80Akm5BPSS8EeB0VGWdy6X1KCoYe8Pk6pwDoAKZUOdLVxnTJcExiv5zw==",
       "path": "system.linq.expressions/4.1.0",
       "hashPath": "system.linq.expressions.4.1.0.nupkg.sha512"
-    },
-    "System.Memory/4.5.3": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-3oDzvc/zzetpTKWMShs1AADwZjQ/36HnsufHRPcOjyRAAMLDlu2iD33MBI2opxnezcVUtXyqDXXjoFMOU9c7SA==",
-      "path": "system.memory/4.5.3",
-      "hashPath": "system.memory.4.5.3.nupkg.sha512"
     },
     "System.Net.Http/4.1.0": {
       "type": "package",

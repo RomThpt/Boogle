@@ -72,6 +72,6 @@ namespace boogle
             return $"Dé: {string.Join(", ", faces)}, Face visible: {visibleFace}";
         }
         #endregion
-        #endregion
+        
     }
 }

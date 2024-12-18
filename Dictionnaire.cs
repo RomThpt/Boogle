@@ -13,12 +13,12 @@ namespace boogle
         /// <summary>
         /// Liste des mots originaux dans le dictionnaire.
         /// </summary>
-        private List<string> words;
+        public List<string> words;
 
         /// <summary>
         /// Tableau trié pour effectuer des recherches dichotomiques.
         /// </summary>
-        private string[] sortedWords;
+        public string[] sortedWords;
 
         /// <summary>
         /// Langue associée au dictionnaire.
@@ -63,7 +63,7 @@ namespace boogle
         /// </summary>
         /// <param name="mot">Mot à vérifier.</param>
         /// <returns>True si le mot est présent dans le dictionnaire, sinon False.</returns>
-        public bool ContientMot(string mot)
+        public virtual bool ContientMot(string mot)
         {
             if (string.IsNullOrEmpty(mot))
                 return false;
@@ -164,7 +164,7 @@ namespace boogle
         /// </summary>
         /// <param name="prefixe">Préfixe à vérifier.</param>
         /// <returns>True si le préfixe est valide, sinon False.</returns>
-        public bool EstPrefixeValide(string prefixe)
+        public virtual bool EstPrefixeValide(string prefixe)
         {
             int index = Array.BinarySearch(sortedWords, prefixe, StringComparer.OrdinalIgnoreCase);
 

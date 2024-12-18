@@ -76,7 +76,6 @@ namespace boogle
             Console.WriteLine("\n--- Configuration du Jeu ---");
 
             // Choix de la langue
-            // Choix de la langue
             bool verifLangue = false;
             while (!verifLangue)
             {
@@ -104,7 +103,6 @@ namespace boogle
             Console.WriteLine($"Langue sélectionnée : {langue}");
 
             // Choix de la taille du plateau
-            // Choix de la taille du plateau
             Console.Write("\nEntrez la taille du plateau (minimum 4) : ");
             while (!int.TryParse(Console.ReadLine(), out taillePlateau) || taillePlateau < 4)
             {
@@ -113,9 +111,7 @@ namespace boogle
             Console.WriteLine($"Taille du plateau : {taillePlateau}x{taillePlateau}");
 
             // Initialiser le dictionnaire en fonction de la langue
-            // Initialiser le dictionnaire en fonction de la langue
             dico = new Dictionnaire(langue);
-        }
         }
 
         /// <summary>
@@ -135,11 +131,6 @@ namespace boogle
             {
                 string nom = "";
                 bool nomValide = false;
-            joueurs = new List<Joueur>();
-            for (int i = 1; i <= nombreJoueurs; i++)
-            {
-                string nom = "";
-                bool nomValide = false;
 
                 while (!nomValide)
                 {
@@ -150,18 +141,7 @@ namespace boogle
                     else
                         nomValide = true;
                 }
-                while (!nomValide)
-                {
-                    Console.Write($"\nEntrez le nom du joueur {i} : ");
-                    nom = Console.ReadLine()?.Trim();
-                    if (string.IsNullOrEmpty(nom))
-                        Console.WriteLine("Le nom ne peut pas être vide. Veuillez entrer un nom valide.");
-                    else
-                        nomValide = true;
-                }
 
-                joueurs.Add(new Joueur(nom));
-            }
                 joueurs.Add(new Joueur(nom));
             }
 
@@ -183,16 +163,7 @@ namespace boogle
             plateauactuel = new Plateau(taillePlateau);
             Console.WriteLine("Plateau généré :");
             Console.WriteLine(plateauactuel.toString());
-            // Initialiser le plateau
-            plateauactuel = new Plateau(taillePlateau);
-            Console.WriteLine("Plateau généré :");
-            Console.WriteLine(plateauactuel.toString());
 
-            // Chronomètre pour chaque joueur
-            foreach (var joueur in joueurs)
-            {
-                Console.WriteLine($"\nTour de {joueur.Nom} : Vous avez 1 minute !");
-                Stopwatch chrono = Stopwatch.StartNew();
             // Chronomètre pour chaque joueur
             foreach (var joueur in joueurs)
             {
@@ -203,16 +174,7 @@ namespace boogle
                 {
                     Console.Write("Entrez un mot trouvé : ");
                     string mot = Console.ReadLine()?.Trim();
-                while (chrono.Elapsed < TimeSpan.FromMinutes(1))
-                {
-                    Console.Write("Entrez un mot trouvé : ");
-                    string mot = Console.ReadLine()?.Trim();
 
-                    if (string.IsNullOrEmpty(mot))
-                    {
-                        Console.WriteLine("Mot vide, essayez encore.");
-                        continue;
-                    }
                     if (string.IsNullOrEmpty(mot))
                     {
                         Console.WriteLine("Mot vide, essayez encore.");
@@ -238,9 +200,6 @@ namespace boogle
                         Console.WriteLine("Mot invalide.");
                     }
 
-                    // Afficher le temps restant
-                    Console.WriteLine($"Temps restant : {60 - chrono.Elapsed.Seconds} secondes.");
-                }
                     // Afficher le temps restant
                     Console.WriteLine($"Temps restant : {60 - chrono.Elapsed.Seconds} secondes.");
                 }

@@ -47,8 +47,8 @@ namespace boogle
                 {
                     int index = random1.Next(0, desDisponibles.Count);
                     plateauDes[i, j] = desDisponibles[index];
-                    int index = random1.Next(0, desDisponibles.Count);
-                    plateauDes[i, j] = desDisponibles[index];
+                    
+                    
                     plateauDes[i, j].Lance(random2); // Lancer le dé pour définir la face visible
                     desDisponibles.RemoveAt(index);
                 }
@@ -90,8 +90,7 @@ namespace boogle
             for (int i = 0; i < taille * taille; i++)
             {
                 char[] FacesDes = new char[6];
-                for (int j = 0; j < 6; j++)
-                char[] FacesDes = new char[6];
+                
                 for (int j = 0; j < 6; j++)
                 {
                     int indice = random.Next(0, listeoccurences.Count);
@@ -99,7 +98,7 @@ namespace boogle
                     listeoccurences.RemoveAt(indice);         
                 }
                 De Detemporaire = new De(FacesDes);
-                De Detemporaire = new De(FacesDes);
+                
                 listeDeDes.Add(Detemporaire);
             }
             return listeDeDes;
@@ -137,7 +136,7 @@ namespace boogle
         /// <param name="mot">Mot à vérifier.</param>
         /// <returns>True si le mot peut être formé, sinon False.</returns>
         public bool Test_Plateau(string mot)
-        {
+        
         {
             mot = mot.ToUpper();
             int taille = plateauDes.GetLength(0);
@@ -166,7 +165,10 @@ namespace boogle
             if (index == mot.Length)
                 return true;
 
-            if (x < 0 || x >= plateauDes.GetLength(0) || y < 0 || y >= plateauDes.GetLength(1) || visited[x, y] || plateauDes[x, y].VisibleFace != mot[index])
+            if (x < 0 || x >= plateauDes.GetLength(0) || y < 0 || y >= plateauDes.GetLength(1) || visited[x, y])
+                return false;
+
+            if (plateauDes[x, y].VisibleFace != mot[index])
                 return false;
 
             visited[x, y] = true;
@@ -178,6 +180,7 @@ namespace boogle
             {
                 if (Backtrack(plateauDes, mot, index + 1, x + dx[i], y + dy[i], visited))
                 {
+                    visited[x, y] = false;
                     return true;
                 }
             }
@@ -213,28 +216,34 @@ namespace boogle
         /// </summary>
         private void RechercheRecursive(int x, int y, string motActuel, bool[,] visited, HashSet<string> motsTrouves, Dictionnaire dico)
         {
+            // Vérifie les limites et si la position est déjà visitée
             if (x < 0 || y < 0 || x >= plateauDes.GetLength(0) || y >= plateauDes.GetLength(1) || visited[x, y])
                 return;
 
+            // Ajoute la lettre actuelle au mot
             motActuel += plateauDes[x, y].VisibleFace;
 
+            // Vérifie si le préfixe est valide
             if (!dico.EstPrefixeValide(motActuel))
                 return;
 
+            // Ajoute le mot s'il est valide
             if (dico.ContientMot(motActuel))
                 motsTrouves.Add(motActuel);
 
+            // Marque la position comme visitée
             visited[x, y] = true;
 
-            for (int dx = -1; dx <= 1; dx++)
+            // Explore toutes les directions (8 directions)
+            int[] dx = { -1, -1, -1, 0, 0, 1, 1, 1 };
+            int[] dy = { -1, 0, 1, -1, 1, -1, 0, 1 };
+
+            for (int i = 0; i < 8; i++)
             {
-                for (int dy = -1; dy <= 1; dy++)
-                {
-                    if (dx != 0 || dy != 0)
-                        RechercheRecursive(x + dx, y + dy, motActuel, visited, motsTrouves, dico);
-                }
+                RechercheRecursive(x + dx[i], y + dy[i], motActuel, visited, motsTrouves, dico);
             }
 
+            // Démarque la position (backtracking)
             visited[x, y] = false;
         }
         #endregion

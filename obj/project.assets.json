@@ -564,31 +564,30 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "SkiaSharp/2.88.0": {
+      "SkiaSharp/2.88.3": {
         "type": "package",
         "dependencies": {
-          "SkiaSharp.NativeAssets.Win32": "2.88.0",
-          "SkiaSharp.NativeAssets.macOS": "2.88.0",
-          "System.Memory": "4.5.3"
+          "SkiaSharp.NativeAssets.Win32": "2.88.3",
+          "SkiaSharp.NativeAssets.macOS": "2.88.3"
         },
         "compile": {
-          "lib/netstandard2.0/SkiaSharp.dll": {
+          "lib/net6.0/SkiaSharp.dll": {
             "related": ".pdb;.xml"
           }
         },
         "runtime": {
-          "lib/netstandard2.0/SkiaSharp.dll": {
+          "lib/net6.0/SkiaSharp.dll": {
             "related": ".pdb;.xml"
           }
         }
       },
-      "SkiaSharp.NativeAssets.macOS/2.88.0": {
+      "SkiaSharp.NativeAssets.macOS/2.88.3": {
         "type": "package",
         "compile": {
-          "lib/netstandard1.3/_._": {}
+          "lib/net5.0/_._": {}
         },
         "runtime": {
-          "lib/netstandard1.3/_._": {}
+          "lib/net5.0/_._": {}
         },
         "runtimeTargets": {
           "runtimes/osx/native/libSkiaSharp.dylib": {
@@ -597,13 +596,13 @@
           }
         }
       },
-      "SkiaSharp.NativeAssets.Win32/2.88.0": {
+      "SkiaSharp.NativeAssets.Win32/2.88.3": {
         "type": "package",
         "compile": {
-          "lib/netstandard1.3/_._": {}
+          "lib/net5.0/_._": {}
         },
         "runtime": {
-          "lib/netstandard1.3/_._": {}
+          "lib/net5.0/_._": {}
         },
         "runtimeTargets": {
           "runtimes/win-arm64/native/libSkiaSharp.dll": {
@@ -1245,15 +1244,6 @@
         },
         "runtime": {
           "lib/netstandard1.6/System.Linq.Expressions.dll": {}
-        }
-      },
-      "System.Memory/4.5.3": {
-        "type": "package",
-        "compile": {
-          "ref/netcoreapp2.1/_._": {}
-        },
-        "runtime": {
-          "lib/netcoreapp2.1/_._": {}
         }
       },
       "System.Net.Http/4.1.0": {
@@ -2866,10 +2856,10 @@
         "runtime.native.system.security.cryptography.nuspec"
       ]
     },
-    "SkiaSharp/2.88.0": {
-      "sha512": "OKBrwZ4TdRjPjl2tVFbcakyNZBI9zBGFzZKr6DbhgybVpjiBMvIQbbbN4Wfl0lts0TJ5AwHDr6EO7zusJJOamQ==",
+    "SkiaSharp/2.88.3": {
+      "sha512": "GG8X3EdfwyBfwjl639UIiOVOKEdeoqDgYrz0P1MUCnefXt9cofN+AK8YB/v1+5cLMr03ieWCQdDmPqnFIzSxZw==",
       "type": "package",
-      "path": "skiasharp/2.88.0",
+      "path": "skiasharp/2.88.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2882,6 +2872,9 @@
         "lib/net462/SkiaSharp.dll",
         "lib/net462/SkiaSharp.pdb",
         "lib/net462/SkiaSharp.xml",
+        "lib/net5.0/SkiaSharp.dll",
+        "lib/net5.0/SkiaSharp.pdb",
+        "lib/net5.0/SkiaSharp.xml",
         "lib/net6.0-android30.0/SkiaSharp.dll",
         "lib/net6.0-android30.0/SkiaSharp.pdb",
         "lib/net6.0-android30.0/SkiaSharp.xml",
@@ -2894,15 +2887,27 @@
         "lib/net6.0-macos10.15/SkiaSharp.dll",
         "lib/net6.0-macos10.15/SkiaSharp.pdb",
         "lib/net6.0-macos10.15/SkiaSharp.xml",
+        "lib/net6.0-tizen7.0/SkiaSharp.dll",
+        "lib/net6.0-tizen7.0/SkiaSharp.pdb",
+        "lib/net6.0-tizen7.0/SkiaSharp.xml",
         "lib/net6.0-tvos13.4/SkiaSharp.dll",
         "lib/net6.0-tvos13.4/SkiaSharp.pdb",
         "lib/net6.0-tvos13.4/SkiaSharp.xml",
+        "lib/net6.0/SkiaSharp.dll",
+        "lib/net6.0/SkiaSharp.pdb",
+        "lib/net6.0/SkiaSharp.xml",
+        "lib/netcoreapp3.1/SkiaSharp.dll",
+        "lib/netcoreapp3.1/SkiaSharp.pdb",
+        "lib/netcoreapp3.1/SkiaSharp.xml",
         "lib/netstandard1.3/SkiaSharp.dll",
         "lib/netstandard1.3/SkiaSharp.pdb",
         "lib/netstandard1.3/SkiaSharp.xml",
         "lib/netstandard2.0/SkiaSharp.dll",
         "lib/netstandard2.0/SkiaSharp.pdb",
         "lib/netstandard2.0/SkiaSharp.xml",
+        "lib/netstandard2.1/SkiaSharp.dll",
+        "lib/netstandard2.1/SkiaSharp.pdb",
+        "lib/netstandard2.1/SkiaSharp.xml",
         "lib/tizen40/SkiaSharp.dll",
         "lib/tizen40/SkiaSharp.pdb",
         "lib/tizen40/SkiaSharp.xml",
@@ -2924,14 +2929,14 @@
         "lib/xamarinwatchos1.0/SkiaSharp.dll",
         "lib/xamarinwatchos1.0/SkiaSharp.pdb",
         "lib/xamarinwatchos1.0/SkiaSharp.xml",
-        "skiasharp.2.88.0.nupkg.sha512",
+        "skiasharp.2.88.3.nupkg.sha512",
         "skiasharp.nuspec"
       ]
     },
-    "SkiaSharp.NativeAssets.macOS/2.88.0": {
-      "sha512": "tfcr1Bnye1lsBbsskqtlkZrFDBZfIEfJoGzJ6nnJF1sSDs8zzdiuL7PjEUDEh5iHb6Wbc0la9f/OIPnUcW7KFg==",
+    "SkiaSharp.NativeAssets.macOS/2.88.3": {
+      "sha512": "CEbWAXMGFkPV3S1snBKK7jEG3+xud/9kmSAhu0BEUKKtlMdxx+Qal0U9bntQREM9QpqP5xLWZooodi8IlV8MEg==",
       "type": "package",
-      "path": "skiasharp.nativeassets.macos/2.88.0",
+      "path": "skiasharp.nativeassets.macos/2.88.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2944,18 +2949,20 @@
         "buildTransitive/net6.0-macos10.15/SkiaSharp.NativeAssets.macOS.targets",
         "buildTransitive/xamarinmac2.0/SkiaSharp.NativeAssets.macOS.targets",
         "lib/net462/_._",
+        "lib/net5.0/_._",
         "lib/net6.0-macos10.15/_._",
+        "lib/netcoreapp3.1/_._",
         "lib/netstandard1.3/_._",
         "lib/xamarinmac2.0/_._",
         "runtimes/osx/native/libSkiaSharp.dylib",
-        "skiasharp.nativeassets.macos.2.88.0.nupkg.sha512",
+        "skiasharp.nativeassets.macos.2.88.3.nupkg.sha512",
         "skiasharp.nativeassets.macos.nuspec"
       ]
     },
-    "SkiaSharp.NativeAssets.Win32/2.88.0": {
-      "sha512": "R//VHCO/FTBtDMyYTzazuqLU8QOczapgf9FIC6Hw2SodP79CYu27+fdGS0fL9bt1qKCCitlI22QWSniPLG8YJg==",
+    "SkiaSharp.NativeAssets.Win32/2.88.3": {
+      "sha512": "MU4ASL8VAbTv5vSw1PoiWjjjpjtGhWtFYuJnrN4sNHFCePb2ohQij9JhSdqLLxk7RpRtWPdV93fbA53Pt+J0yw==",
       "type": "package",
-      "path": "skiasharp.nativeassets.win32/2.88.0",
+      "path": "skiasharp.nativeassets.win32/2.88.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2964,11 +2971,13 @@
         "build/net462/SkiaSharp.NativeAssets.Win32.targets",
         "buildTransitive/net462/SkiaSharp.NativeAssets.Win32.targets",
         "lib/net462/_._",
+        "lib/net5.0/_._",
+        "lib/netcoreapp3.1/_._",
         "lib/netstandard1.3/_._",
         "runtimes/win-arm64/native/libSkiaSharp.dll",
         "runtimes/win-x64/native/libSkiaSharp.dll",
         "runtimes/win-x86/native/libSkiaSharp.dll",
-        "skiasharp.nativeassets.win32.2.88.0.nupkg.sha512",
+        "skiasharp.nativeassets.win32.2.88.3.nupkg.sha512",
         "skiasharp.nativeassets.win32.nuspec"
       ]
     },
@@ -4587,27 +4596,6 @@
         "runtimes/aot/lib/netcore50/System.Linq.Expressions.dll",
         "system.linq.expressions.4.1.0.nupkg.sha512",
         "system.linq.expressions.nuspec"
-      ]
-    },
-    "System.Memory/4.5.3": {
-      "sha512": "3oDzvc/zzetpTKWMShs1AADwZjQ/36HnsufHRPcOjyRAAMLDlu2iD33MBI2opxnezcVUtXyqDXXjoFMOU9c7SA==",
-      "type": "package",
-      "path": "system.memory/4.5.3",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/netcoreapp2.1/_._",
-        "lib/netstandard1.1/System.Memory.dll",
-        "lib/netstandard1.1/System.Memory.xml",
-        "lib/netstandard2.0/System.Memory.dll",
-        "lib/netstandard2.0/System.Memory.xml",
-        "ref/netcoreapp2.1/_._",
-        "system.memory.4.5.3.nupkg.sha512",
-        "system.memory.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
       ]
     },
     "System.Net.Http/4.1.0": {
@@ -7097,7 +7085,7 @@
   "projectFileDependencyGroups": {
     "net8.0": [
       "Microsoft.NET.Test.Sdk >= 16.0.0-preview-20181205-02",
-      "SkiaSharp >= 2.88.0",
+      "SkiaSharp >= 2.88.3",
       "System.Drawing.Common >= 9.0.0",
       "xunit >= 2.9.2",
       "xunit.runner.visualstudio >= 2.4.1"
@@ -7153,7 +7141,7 @@
           },
           "SkiaSharp": {
             "target": "Package",
-            "version": "[2.88.0, )"
+            "version": "[2.88.3, )"
           },
           "System.Drawing.Common": {
             "target": "Package",
@@ -7193,7 +7181,7 @@
       "code": "NU1903",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Le package 'SkiaSharp' 2.88.0 présente une vulnérabilité de gravité élevé(e) connue, https://github.com/advisories/GHSA-j7hp-h8jx-5ppr.",
+      "message": "Le package 'SkiaSharp' 2.88.3 présente une vulnérabilité de gravité élevé(e) connue, https://github.com/advisories/GHSA-j7hp-h8jx-5ppr.",
       "libraryId": "SkiaSharp",
       "targetGraphs": [
         "net8.0"
