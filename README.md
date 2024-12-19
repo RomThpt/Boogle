@@ -1,7 +1,7 @@
 # Boogle
 
 ## Introduction
-Boogle is a C# project designed to [briefly describe the purpose of the project]. This repository contains all the necessary code and resources to get started with Boogle.
+Boogle is a C# project. This repository contains all the necessary code and resources to get started with Boogle.
 
 ## Installation
 To install and set up Boogle, follow these steps:
