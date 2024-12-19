@@ -1,7 +1,3 @@
-Based on the information gathered, here's a generated README outline for your repository `RomThpt/Boogle`:
-
----
-
 # Boogle
 
 ## Introduction
@@ -37,7 +33,3 @@ This project is not currently licensed. If you would like to add a license, plea
 
 ## Contact
 For any questions or inquiries, you can reach out to the repository owner [RomThpt](https://github.com/RomThpt).
-
----
-
-Would you like to add any specific sections or details to this README?
